@@ -23,7 +23,7 @@ The designs were created to the following widths:
 ### Body Copy
 
 - Homepage Items: 14px
-- Detail Page: 16px 
+- Detail Page: 16px
 
 ### Fonts
 
@@ -39,3 +39,5 @@ Some suggestions can be found below:
 - [Font Awesome](https://fontawesome.com)
 - [IcoMoon](https://icomoon.io)
 - [Ionicons](https://ionicons.com)
+
+https://mellow-puppy-fbf28a.netlify.app/

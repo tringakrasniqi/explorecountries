@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
 const StyledCard = styled.div`
-  min-width: 300px;
+  min-width: 250px;
+  max-width: 300px;
   margin: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 3px;
+  border: 1px solid ${(props) => props.theme.elements};
+  border-radius: 6px;
+  background-color: ${(props) => props.theme.elements};
 
   .info {
     padding: 1rem;
@@ -13,7 +15,7 @@ const StyledCard = styled.div`
 
 const StyledImg = styled.img`
   width: 300px;
-  height: 200px;
+  height: 150px;
   object-fit: cover;
   border-radius: 0 3px;
 `;
