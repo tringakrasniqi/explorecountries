@@ -29,14 +29,32 @@ type CardProps = {
     alt: string;
     png: string;
   };
+  onClick?: () => void;
 };
 
-export const Card = ({ name, area, region, capital, image }: CardProps) => {
+const StyledHeader = styled.h2`
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
+export const Card = ({
+  name,
+  area,
+  region,
+  capital,
+  image,
+  onClick,
+}: CardProps) => {
   return (
-    <StyledCard>
+    <StyledCard
+      onClick={onClick}
+      style={{ cursor: onClick === undefined ? "default" : "pointer" }}
+    >
       <StyledImg src={image.png} alt={image.alt} />
       <div className="info">
-        <h2>{name}</h2>
+        <StyledHeader>{name}</StyledHeader>
         <p>
           <b>Population:</b> {area}
         </p>
