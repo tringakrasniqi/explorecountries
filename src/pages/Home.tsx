@@ -18,11 +18,9 @@ export type Country = {
 };
 
 const Main = styled.main`
-  .countries {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `;
 
 export const Home = () => {
@@ -34,22 +32,19 @@ export const Home = () => {
       <Filters setCountriesData={setAllCountries} />
       <Main>
         <ErrorBoundary fallback={<div>Something went wrong</div>}>
-          <div className="countries">
-            {countries.map((country) => (
-              <div key={country.name.common}>
-                <Card
-                  onClick={() => navigate(`/country/${country.name.common}`)}
-                  area={country.population}
-                  name={country.name.common}
-                  region={country.region}
-                  capital={
-                    country.capital ? country.capital[0] : country.name.common
-                  }
-                  image={{ alt: country.flags.alt, png: country.flags.png }}
-                />
-              </div>
-            ))}
-          </div>
+          {countries.map((country) => (
+            <Card
+              key={country.name.common}
+              onClick={() => navigate(`/country/${country.name.common}`)}
+              area={country.population}
+              name={country.name.common}
+              region={country.region}
+              capital={
+                country.capital ? country.capital[0] : country.name.common
+              }
+              image={{ alt: country.flags.alt, png: country.flags.png }}
+            />
+          ))}
         </ErrorBoundary>
       </Main>
     </>

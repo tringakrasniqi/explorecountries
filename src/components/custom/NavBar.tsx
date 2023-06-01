@@ -30,7 +30,6 @@ const StyledLink = styled(Link)`
 const StyledIcon = styled(GiWorld)`
   margin-right: 5px;
   vertical-align: sub;
-  color: aqua;
 `;
 
 export const NavBar: React.FC<NavBarProps> = ({ toggleTheme, isDarkMode }) => {

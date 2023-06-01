@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledCard = styled.div`
+const StyledCard = styled.section`
   min-width: 250px;
   max-width: 300px;
   margin: 2rem;

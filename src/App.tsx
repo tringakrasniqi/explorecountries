@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import {
   ThemeProvider,
   createGlobalStyle,
@@ -8,7 +13,7 @@ import {
 import { Home } from "./pages/Home";
 import { NavBar } from "./components/custom/NavBar";
 import { CountryDetails } from "./pages/CountryDetails";
-import ErrorPage from "./pages/ErrorPage";
+import { ErrorPage } from "./pages/ErrorPage";
 
 const light: DefaultTheme = {
   background: "#fafafa",
@@ -56,7 +61,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/country/:countryId" element={<CountryDetails />} />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="/404" element={<ErrorPage />} />
+          <Route path="*" element={<Navigate to="/404" />} />
         </Routes>
       </Router>
       <GlobalCSS />
