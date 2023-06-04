@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { GiWorld } from "react-icons/gi";
 import { Link } from "react-router-dom";
+
 type NavBarProps = {
   toggleTheme: () => void;
   isDarkMode: boolean;
@@ -21,6 +22,7 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
   font-size: 1.5rem;
+  font-weight: 400;
   padding: 1rem;
   :hover {
     opacity: 0.8;
@@ -35,10 +37,12 @@ const StyledIcon = styled(GiWorld)`
 export const NavBar: React.FC<NavBarProps> = ({ toggleTheme, isDarkMode }) => {
   return (
     <Nav>
-      <StyledLink to={"/"}>
-        <StyledIcon />
-        Where in the world?
-      </StyledLink>
+      <h1>
+        <StyledLink to={"/"}>
+          <StyledIcon />
+          Where in the world?
+        </StyledLink>
+      </h1>
       <ThemeSwitcher toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
     </Nav>
   );

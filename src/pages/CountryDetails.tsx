@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SearchType, getData } from "../services/CountriesService";
-import { Button } from "../components/Button";
+import { StyledButtonWithIcon } from "../components/Button";
 import { AiOutlineArrowLeft } from "react-icons/ai";
-import { ErrorBoundary } from "react-error-boundary";
+import { AnchorLink } from "../components/Link";
 
 interface Currencies {
   [key: string]: Currency;
@@ -126,11 +126,12 @@ export const CountryDetails = () => {
 
   return (
     <StyledCountryDetails>
-      <Button
+      <StyledButtonWithIcon
         onClick={() => navigate("/")}
-        text={"Back"}
         icon={<AiOutlineArrowLeft />}
-      />
+      >
+        Back
+      </StyledButtonWithIcon>
       {details ? (
         <Container>
           <StyledImg src={details.flags.png} alt={details.flags.alt} />
@@ -162,7 +163,9 @@ export const CountryDetails = () => {
                   <b>Currencies: </b>
                   {Array.from(Object.values(details.currencies)).map(
                     (value) => (
-                      <span key={value.name}>{value.name} </span>
+                      <span key={value.name}>
+                        {value.name} ({value.symbol}){" "}
+                      </span>
                     )
                   )}
                 </li>
@@ -173,26 +176,24 @@ export const CountryDetails = () => {
               </DetailsList>
             </DetailsContainer>
             {borderCountriesDetails && (
-              <div>
+              <>
                 <b>Border Countries:</b>
                 <BorderCountries>
                   {borderCountriesDetails.map((country: CountryDetails) => (
-                    <span style={{ margin: "0.2rem" }} key={country.tld}>
-                      <Button
-                        text={country.name.common}
-                        onClick={() =>
-                          navigate(`/country/${country.name.common}`)
-                        }
-                      />
-                    </span>
+                    <AnchorLink
+                      key={country.name.common}
+                      href={`/country/${country.name.common}`}
+                    >
+                      {country.name.common}
+                    </AnchorLink>
                   ))}
                 </BorderCountries>
-              </div>
+              </>
             )}
           </InnerContainer>
         </Container>
       ) : (
-        <p>Oops 🙊! No data for this country is available at the moment!</p>
+        <p>Loading...</p>
       )}
     </StyledCountryDetails>
   );

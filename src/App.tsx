@@ -19,14 +19,16 @@ const light: DefaultTheme = {
   background: "#fafafa",
   elements: "#ffffff",
   text: "#111517",
-  shadow: "hsl(0, 0%, 52%)",
+  shadow: "hsl(0, 0%, 74%)",
+  textHover: "#2b3945",
 };
 
 const dark: DefaultTheme = {
   background: "#202c37",
   elements: "#2b3945",
   text: "#ffffff",
-  shadow: "#202c37",
+  shadow: "rgba(0, 0, 0, 0.51)",
+  textHover: "hsl(0, 0%, 52%)",
 };
 
 const GlobalCSS = createGlobalStyle`

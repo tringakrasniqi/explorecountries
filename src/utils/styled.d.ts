@@ -7,5 +7,6 @@ declare module "styled-components" {
     elements: string;
     text: string;
     shadow: string;
+    textHover: string;
   }
 }

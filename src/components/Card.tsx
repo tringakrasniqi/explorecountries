@@ -47,10 +47,18 @@ export const Card = ({
   image,
   onClick,
 }: CardProps) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.key === "Enter") {
+      onClick && onClick();
+    }
+  };
+
   return (
     <StyledCard
       onClick={onClick}
       style={{ cursor: onClick === undefined ? "default" : "pointer" }}
+      tabIndex={0}
+      onKeyDown={handleKeyPress}
     >
       <StyledImg src={image.png} alt={image.alt} />
       <div className="info">

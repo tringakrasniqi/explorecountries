@@ -1,23 +1,16 @@
-import { MouseEventHandler, FC } from "react";
-import { IconBaseProps } from "react-icons";
+import React from "react";
 import styled from "styled-components";
 
-type ButtonProps = {
-  text: string;
-  onClick: MouseEventHandler<HTMLButtonElement>;
-  disabled?: boolean;
+type ButtonProps = React.ComponentProps<"button"> & {
   icon?: JSX.Element;
 };
 
-const StyledButton = styled.button`
-  padding: 10px;
+export const Button = styled.button`
   background-color: inherit;
   color: inherit;
   border: none;
-  border: 1px solid ${(props) => props.theme.elements};
-  box-shadow: -2px -1px 32px -4px rgba(0, 0, 0, 0.51);
   padding: 0.5rem 2rem;
-  border-radius: 6px;
+  border-radius: 2px;
   :hover {
     opacity: 0.8;
     cursor: pointer;
@@ -28,17 +21,29 @@ const StyledIcon = styled.span`
   margin: 0 0.5rem 0 0;
 `;
 
-export const Button: FC<ButtonProps> = ({
-  text,
-  disabled,
-  onClick,
+const ButtonWithIcon: React.FC<ButtonProps> = ({
   icon,
+  children,
   ...props
 }) => {
   return (
-    <StyledButton onClick={onClick} disabled={disabled} {...props}>
+    <button {...props}>
       {icon && <StyledIcon>{icon}</StyledIcon>}
-      {text}
-    </StyledButton>
+      {children}
+    </button>
   );
 };
+
+export const StyledButtonWithIcon = styled(ButtonWithIcon)`
+  background-color: inherit;
+  color: inherit;
+  border: none;
+  border: 1px solid ${(props) => props.theme.elements};
+  box-shadow: -2px -1px 32px -4px ${(props) => props.theme.shadow};
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  :hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+`;

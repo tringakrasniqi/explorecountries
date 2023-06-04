@@ -31,9 +31,14 @@ export const Dropdown: FC<DropdwonProps> = ({
   return (
     <StyledFieldSet>
       <legend>{label}</legend>
-      <StyledSelect id={label} {...props} onChange={onChange}>
+      <StyledSelect
+        id={label}
+        defaultValue={defaultValue}
+        {...props}
+        onChange={onChange}
+      >
         {items.map((item) => (
-          <option key={item} value={item} selected={defaultValue === item}>
+          <option key={item} value={item}>
             {item}
           </option>
         ))}
